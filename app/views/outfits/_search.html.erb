@@ -1,0 +1,8 @@
+  <%= search_form_for @q, url: url do |f| %>
+    <div class="input-group ">
+      <%= f.search_field :title_or_content_cont, placeholder: '検索ワード', size: "30"%>
+      <div class="input-group-append">
+        <%= f.submit '🔍', class: 'btn btn-primary' %>
+      </div>
+    </div>
+  <% end %>

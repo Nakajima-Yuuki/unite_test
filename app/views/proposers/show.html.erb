@@ -1,5 +1,9 @@
-<h1>Users#show</h1>
+<h1><%= @proposer.username %>のページ</h1>
 <p>名前 : <%= @proposer.username %></p>
 <p>メールアドレス : <%= @proposer.email %></p>
 <p>プロフィール : <%= @proposer.profile %></p>
-<p>写真 :<%= image_tag @proposer.avatar, class: "round-img" %></p>
+<% if @proposer.avatar.attached? %>
+   <p><%= image_tag @proposer.avatar, class: "round-img" %></p>
+<% end %>
+
+<%= link_to 'プロフィール変更', edit_proposer_registration_path %>
