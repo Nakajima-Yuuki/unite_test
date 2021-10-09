@@ -1,0 +1,27 @@
+
+<p>
+  <strong>Title:</strong>
+  <%= @outfit.title %>
+</p>
+
+<p>
+  <strong>Content:</strong>
+  <%= @outfit.content %>
+</p>
+
+<strong>image:</strong>
+<%= image_tag @outfit.image.variant(resize: '200x200') %>
+
+
+ <div class="stock_button">
+ <% if user_signed_in? %>
+  <% if @stock.present? %>
+    <%= link_to 'お気に入り解除する', stock_path(id: @stock.id), method: :delete, class: 'btn btn-danger'%>
+  <% else %>
+    <%= link_to 'お気に入りする', stocks_path(outfit_id: @outfit.id), method: :post, class: 'btn btn-primary'%>
+  <% end %>
+ <% end %> 
+ </div><br>
+
+<%= link_to 'Edit', edit_outfit_path(@outfit) %> |
+<%= link_to 'Back', outfits_path %>

@@ -1,6 +1,13 @@
 # frozen_string_literal: true
 
 class Proposers::PasswordsController < Devise::PasswordsController
+  before_action :ensure_normal_proposer, only: :create
+
+  def ensure_normal_proposer
+    if params[:proposer][:email].downcase == 'guest_proposer@example.com'
+      redirect_to new_proposer_session_path, alert: 'ゲストファッショニスタのパスワード再設定はできません。'
+    end
+  end
   # GET /resource/password/new
   # def new
   #   super

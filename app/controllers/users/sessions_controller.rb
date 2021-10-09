@@ -3,6 +3,17 @@
 class Users::SessionsController < Devise::SessionsController
   # before_action :configure_sign_in_params, only: [:create]
 
+  before_action :ensure_not_proposer
+
+  def guest_sign_in
+    user = User.guest
+    sign_in user
+    redirect_to outfits_path, notice: 'ゲストユーザーとしてログインしました'
+  end
+
+  def ensure_not_proposer
+    redirect_to outfits_path, notice: 'アクセス権限がありません' if current_proposer.present?
+  end
   # GET /resource/sign_in
   # def new
   #   super

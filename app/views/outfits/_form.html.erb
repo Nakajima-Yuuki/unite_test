@@ -1,0 +1,34 @@
+<%= form_with(model: outfit, local: true) do |form| %>
+  <% if outfit.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(outfit.errors.count, "error") %> prohibited this outfit from being saved:</h2>
+
+      <ul>
+      <% outfit.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :title %>
+    <%= form.text_field :title %>
+  </div>
+
+  <div class="field">
+    <%= form.label :content %>
+    <%= form.text_area :content %>
+  
+  </div>
+    <div class="field">
+  <%= form.label :image %>
+    <%= form.file_field :image, autofocus: true %>
+    <%= form.hidden_field :image_cache %>
+  </div>
+
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

@@ -19,7 +19,7 @@
   </div>
 
   <div class="field">
-  <%= form.file_field :avatar %><br />
+  <%= f.label :avatar %><br />
   <%= f.file_field :avatar, autofocus: true %>
 
   <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>

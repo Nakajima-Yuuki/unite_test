@@ -1,0 +1,27 @@
+
+<h1>Outfits</h1>
+<%= render 'search', q: @q, url: outfits_path %>
+<table>
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Content</th>
+      <th>image</th>
+      <th>いいね</th>
+      <th> ユーザー名</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @outfits.each do |outfit| %>
+       <tr id="outfit_<%= outfit.id %>">
+        <%= render 'outfit', outfit: outfit %>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Outfit', new_outfit_path %>
