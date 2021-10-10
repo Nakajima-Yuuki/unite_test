@@ -11,7 +11,7 @@ class Proposer < ApplicationRecord
 
   def self.guest
     find_or_create_by!(email: 'guest_proposer@example.com') do |proposer|
-      proposer.name = 'ゲストファッショニスタ'
+      proposer.username = 'ゲストファッショニスタ'
       proposer.password = SecureRandom.urlsafe_base64
     end
   end

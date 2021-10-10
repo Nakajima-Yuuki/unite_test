@@ -5,7 +5,7 @@ class Proposers::SessionsController < Devise::SessionsController
   before_action :ensure_not_user
 
   def guest_sign_in
-    proposer = Proposers.guest
+    proposer = Proposer.guest
     sign_in proposer
     redirect_to outfits_path, notice: 'ゲストファッショニスタとしてログインしました。'
   end
