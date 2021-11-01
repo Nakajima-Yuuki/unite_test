@@ -6,4 +6,6 @@ class Outfit < ApplicationRecord
     has_many :stocks, dependent: :destroy
     has_many :stocks_users, through: :stocks, source: :user
     has_many :likes, dependent: :destroy
+
 end
+

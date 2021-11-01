@@ -10,31 +10,36 @@
   </head>
 
   <body>
-        <header>
-          <nav>
+        <header> 
+        <div class="container-fluid">
+          <nav class="navbar fixed-top  pt-1 pb-3 mt-3">
             <% if user_signed_in? %>
                 <!--<%= link_to 'サインアップ', new_user_registration_path %>
                 <%= link_to 'ログイン', new_user_session_path %> -->
-                <%= link_to "マイページ", user_path(current_user.id) %>
+                <%= link_to "マイページ", user_path(current_user.id) , class: "btn btn-outline-secondary"%>
                 <!--<%= link_to 'プロフィール変更', edit_user_registration_path %> -->
-                <%= link_to 'ログアウト', destroy_user_session_path, method: :delete %>
+                <%= link_to 'ログアウト', destroy_user_session_path, method: :delete , class: "btn btn-outline-secondary"%>
             <% elsif proposer_signed_in? %>
                 <!--<%= link_to 'プロポーサーサインアップ', new_proposer_registration_path %>
                 <%= link_to 'プロポーサーログイン', new_proposer_session_path %> -->
-                <%= link_to "マイページ", proposer_path(current_proposer.id) %>
+                <%= link_to "マイページ", proposer_path(current_proposer.id) , class: "btn btn-outline-secondary"%>
                 <!-- <%= link_to 'プロフィール変更', edit_proposer_registration_path %> -->
-                <%= link_to 'プロポーサーログアウト', destroy_proposer_session_path, method: :delete %>
+                <%= link_to 'プロポーサーログアウト', destroy_proposer_session_path, method: :delete , class: "btn btn-outline-secondary"%>
             <% else %>
-                <%= link_to 'サインアップ', new_user_registration_path %>
-                <%= link_to 'ログイン', new_user_session_path %>
-                <%= link_to 'プロポーサーサインアップ', new_proposer_registration_path %>
-                <%= link_to 'プロポーサーログイン', new_proposer_session_path %>
+                <!--<%= link_to 'サインアップ', new_user_registration_path %>-->
+                <%= link_to 'Userログイン', new_user_session_path , class: "btn btn-outline-secondary"%>
+                <!--<%= link_to 'プロポーサーサインアップ', new_proposer_registration_path %>-->
+                <%= link_to 'Fashionistaログイン', new_proposer_session_path , class: "btn btn-outline-secondary"%>
                 <% end %>
           </nav>
         </header>
-    
+    </div>
     <p class="notice"><%= notice %></p>
     <p class="alert"><%= alert %></p>
     <%= yield %>
+        <br><br><br>
+    <footer class="fixed text-center text-dark bg-light p-3 mt-3">
+    ©️2021 UnitE All Rights Reserved.
+    </footer>
   </body>
 </html>

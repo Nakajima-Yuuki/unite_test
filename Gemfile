@@ -14,6 +14,7 @@ gem 'ransack'
 gem 'cancancan'
 gem 'rails_admin'
 gem 'rails-i18n'
+gem 'jquery-rails'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.2.5'
 # Use postgresql as the database for Active Record

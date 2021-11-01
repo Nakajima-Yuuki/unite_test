@@ -1,4 +1,45 @@
-<h1>UnitE</h1>
-<p>トップページです。</p>
-<%= link_to 'ゲストログイン（閲覧用）', users_guest_sign_in_path, method: :post %>
-<%= link_to 'ゲストファッショニスタログイン（閲覧用）', proposers_guest_sign_in_path, method: :post %>
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>UniteApp</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+ <body>
+ <div class="area">
+ <p><h2>UnitE</h2></p>  
+ </div>
+
+    <div class="cd-fixed-bg cd-bg-1"></div>
+
+<div class="area">
+  <p>お洒落はしたいけど上手くコーディネートが出来ない</p>
+  <p>そんな悩みを抱えてる方々に毎日のコーディネートのヒントとなるように</p>
+  <p>スタイリストやショップ店員がアイデアをお届けします！</p> 
+</div>
+
+<div class="cd-fixed-bg cd-bg-1"></div>
+    <div class="col-md-12">
+      <div class="card text-center">
+        <div class="card-body">
+          <p class="card-text text-dark">
+            <strong>GuestFashionistaログイン</strong>
+          <a class="nav-link" href=""><%= link_to 'ログイン', proposers_guest_sign_in_path, method: :post, class: "btn btn-outline-secondary" %></a>
+          </p>
+          <hr>
+          <p class="card-text text-dark">
+            <strong>GuestUserログイン</strong>
+          <a class="nav-link" href=""><%= link_to 'ログイン', users_guest_sign_in_path, method: :post, class: "btn btn-outline-secondary" %></a>
+
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+ </div>
+ </body>
+</html>

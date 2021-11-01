@@ -1,24 +1,78 @@
-    <td><%= outfit.title %></td>
-    <td><%= outfit.content %></td>
-    <td><%= image_tag outfit.image.variant(resize: '200x200') %></td>
-  <% if current_proposer.nil? && current_user.liked_by?(outfit.id) %>
+<div class="card-deck">
+  <div class="card mb-4">
+    <%= link_to outfit_path(outfit) do %><%= image_tag outfit.image.variant(resize: "200x200"), class: "bd-placeholder-img card-img-top", style: "width=25%, height=200, focusable=false" %><% end %>
+    <!-- <svg class="bd-placeholder-img card-img-top" width="25%" height="200" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: Image cap"><title>Placeholder</title><rect width="25%" height="100%" fill="#868e96"/><text x="50%" y="50%" fill="#dee2e6" dy=".3em">Image cap</text></svg> -->
+    <div class="card-body">
+      <h5 class="card-title"><%= outfit.title %></h5>
+      <p class="card-text"><%= outfit.content %></p>
+      <p class="card-text">
+        <small class="text-muted">
+          <% if current_proposer.nil? && current_user.liked_by?(outfit.id) %>
+            <%= link_to destroy_like_path(outfit), class: "like-link", method: :DELETE, remote: true do %>
+              <i class="fa fa-heart unlike-btn"></i>
+            <% end %>
+            <%= outfit.likes.count %>
+          <% else %>
+            <%= link_to create_like_path(outfit), class: "like-link", method: :POST, remote: true do %>
+              <i class="fa fa-heart like-btn"></i>
+            <% end %>
+            <%= outfit.likes.count %>
+          <% end %>
+        </small>
+      </p>
+      <p class="card-text"><%= outfit.proposer.username %></p>
+      <p class="card-text">
+        <% if current_proposer == outfit.proposer %>
+        <%= link_to 'Edit', edit_outfit_path(outfit) %>
+        <%= link_to 'Destroy', outfit, method: :delete, data: { confirm: 'Are you sure?' } %>
+      </p>
+      <% end %>
+    </div>
+  </div>
+<!--
+  <div class="card">
+    <svg class="bd-placeholder-img card-img-top" width="100%" height="200" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: Image cap"><title>Placeholder</title><rect width="100%" height="100%" fill="#868e96"/><text x="50%" y="50%" fill="#dee2e6" dy=".3em">Image cap</text></svg>
+    <div class="card-body">
+      <h5 class="card-title">Card title</h5>
+      <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
+      <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+    </div>
+  </div>
+  <div class="card">
+    <svg class="bd-placeholder-img card-img-top" width="100%" height="200" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: Image cap"><title>Placeholder</title><rect width="100%" height="100%" fill="#868e96"/><text x="50%" y="50%" fill="#dee2e6" dy=".3em">Image cap</text></svg>
+    <div class="card-body">
+      <h5 class="card-title">Card title</h5>
+      <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.</p>
+      <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+    </div>
+  </div>
+  -->
+
+
+</div>
+<!-- 
+    <td><%#= outfit.title %></td>
+    <td><%#= outfit.content %></td>
+    <td><%#= image_tag outfit.image.variant(resize: '200x200') %></td>
+  <%# if current_proposer.nil? && current_user.liked_by?(outfit.id) %>
       <td>
-    <%= link_to destroy_like_path(outfit), class: "like-link", method: :DELETE, remote: true do %>
+    <%#= link_to destroy_like_path(outfit), class: "like-link", method: :DELETE, remote: true do %>
       <i class="fa fa-heart unlike-btn"></i>
-    <% end %>
-    <%= outfit.likes.count %>
+    <%# end %>
+    <%#= outfit.likes.count %>
   </td>
-  <% else %>
+  <%# else %>
        <td>
-    <%= link_to create_like_path(outfit), class: "like-link", method: :POST, remote: true do %>
+    <%#= link_to create_like_path(outfit), class: "like-link", method: :POST, remote: true do %>
       <i class="fa fa-heart like-btn"></i>
-    <% end %>
-    <%= outfit.likes.count %>
+    <%# end %>
+    <%#= outfit.likes.count %>
   </td>
-  <% end %>
-    <td><%= outfit.proposer.username %></td>
-    <td><%= link_to 'Show', outfit %></td>
-  <% if current_proposer == outfit.proposer %>
-    <td><%= link_to 'Edit', edit_outfit_path(outfit) %></td>
-    <td><%= link_to 'Destroy', outfit, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-  <% end %>
+  <%# end %>
+    <td><%#= outfit.proposer.username %></td>
+    <td><%#= link_to 'Show', outfit %></td>
+  <%# if current_proposer == outfit.proposer %>
+    <td><%#= link_to 'Edit', edit_outfit_path(outfit) %></td>
+    <td><%#= link_to 'Destroy', outfit, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  <%# end %>
+-->

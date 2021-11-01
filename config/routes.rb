@@ -1,14 +1,13 @@
 Rails.application.routes.draw do
   
+  devise_for :admins
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   resources :outfits 
   resources :stocks, only: [:create, :destroy]
   post 'like/:id' => 'likes#create', as: 'create_like'
   delete 'like/:id' => 'likes#destroy', as: 'destroy_like'
   
-  #get 'proposers/show'
-  #get 'home/index'
-  #get 'home/show'
+
   root to: "home#index"
   devise_for :proposers, controllers:{
     sessions: 'proposers/sessions',

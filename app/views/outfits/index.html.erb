@@ -1,7 +1,6 @@
 
-<h1>Outfits</h1>
 <%= render 'search', q: @q, url: outfits_path %>
-<table>
+<!-- <table>
   <thead>
     <tr>
       <th>Title</th>
@@ -14,14 +13,17 @@
   </thead>
 
   <tbody>
+  -->
+  <br/>
+  <div class="row card-deck">
     <% @outfits.each do |outfit| %>
-       <tr id="outfit_<%= outfit.id %>">
+       <div class="col-xs-11 col-sm-5 col-md-4 col-lg-4" id="outfit_<%= outfit.id %>">
         <%= render 'outfit', outfit: outfit %>
-      </tr>
+      </div>
     <% end %>
-  </tbody>
-</table>
+  </div>
 
 <br>
-
+<% if proposer_signed_in? %>
 <%= link_to 'New Outfit', new_outfit_path %>
+<% end %>
